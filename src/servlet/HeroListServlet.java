@@ -15,6 +15,14 @@ public class HeroListServlet extends HttpServlet {
 
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String userName = (String) request.getSession().getAttribute("userName");
+        if (null == userName) {
+            response.sendRedirect("login.html");
+            return;
+        }
+
+
         response.setContentType("text/html; charset=UTF-8");
 
         int start = 0;
